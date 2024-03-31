@@ -1,0 +1,1017 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Лабораторная работа №1</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1d2a105b-a619-4e27-b6b7-cfb83cbc9dc3" class="page sans"><header><h1 class="page-title">Лабораторная работа №1</h1><p class="page-description"></p></header><div class="page-body"><p id="6296a180-ed88-4c07-837a-de612eedc932" class="">Выполнила: Сыдыгалиева Бегаим, группа 21.Б03</p><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">1) Получение выборок объемом 80 и 60 значений из нормально распределенных генеральных совокупностей с разными значениями параметров </summary><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="fa46a9ae-e6d2-4030-bc05-6d09a2c6c1e0" class="code"><code class="language-R">#--------1. получение выборок--------#
+library (moments)
+vector1 = rnorm(80, mean = 1, sd = 6)
+vector2 = rnorm(60, mean = 21, sd = 5)</code></pre></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">2) Составление вариационного ряда (с помощью сортировки и объединения данных)</summary><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="576a0822-689a-4f7b-bef3-3cd74edf4afa" class="code"><code class="language-R">#--------2. составление вариационного ряда--------#
+s = c(vector1, vector2)
+data_ &lt;- 	data.frame(
+  sampl = s
+)
+data_$sampl = sort(data_$sampl)
+print(data_)</code></pre><figure id="0d17a881-f32f-46bc-bb78-2b4bf393bdad"><div class="source"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/data.csv">data.csv</a></div></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b085c414-9282-4a73-8d3d-8e1ca135c7c2" class="code"><code class="language-R">#построим диаграмму рассеяния
+plot(data_$sampl)</code></pre><figure id="e04c9fac-9478-4eea-9b44-5e0e4a0e2f89" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled.png"><img style="width:346.3999938964844px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled.png"/></a></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">3)  Выборочные характеристики:</summary><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="964059f7-bc7e-431a-a12d-9936689b95c4" class="code"><code class="language-R">#--------3. выборочные характеристики--------#
+n = length(data_$sampl)
+cat(&quot;n = &quot;, length(data_$sampl))
+cat(&quot;x_max = &quot;, max(data_$sampl))
+cat(&quot;x_min = &quot;, min(data_$sampl))
+cat(&quot;x_mean = &quot;, mean(data_$sampl))
+cat(&quot;median = &quot;, median(data_$sampl))
+find_mode &lt;- function (x) {
+  distinct_A &lt;- unique(x)
+  matches &lt;- match(x, distinct_A)
+  table_A &lt;- tabulate(matches)
+  max_A &lt;- which.max(table_A)
+  mode&lt;-distinct_A[max_A]
+}
+cat(&quot;mode = &quot;, find_mode(data_$sampl))
+#mode = sort(unique(data_$sampl))[which.max(data_$sampl)]
+#cat(&quot;mode = &quot;, mode)
+#cat(&quot;var_range = &quot;, range(data_$sampl))
+cat(&quot;_range = &quot;, max(data_$sampl) - min(data_$sampl))
+cat(&quot;var (несмещенная выборочная дисперсия) = &quot;, var(data_$sampl))
+cat(&quot;var (смещенная выборочная дисперсия) = &quot;, var(data_$sampl)*(n-1)/n)
+cat(&quot;sd (выб-ое среднее квадратическое отклонение по несмещенной дисп)= &quot;, sd(data_$sampl))
+cat(&quot;sd (выб-ое среднее квадратическое отклонение по смещенной дисп)= &quot;, sd(data_$sampl)*sqrt((n-1)/n))
+cat(&quot;среднее абсолютное отклонение = &quot;, mad(data_$sampl))
+
+cat(&quot;эксцесс эмпирического распределения = &quot;, kurtosis(data_$sampl))
+cat(&quot;асимметрия эмпирического распределения = &quot;, skewness(data_$sampl))
+cat(&quot;cv: variation coeff = &quot;, ((sd(data_$sampl) / mean(data_$sampl)) * 100))
+cat(&quot;ошибка выборки = &quot;, sd(data_$sampl)/(sqrt(n)))
+</code></pre><blockquote id="02b5b122-4b3a-45a6-9336-37ac7fbbc1e7" class="">результат:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="87041a85-6ff0-42dc-a84e-3daa02bc9fc9" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">n =  140 #Число случайных чисел 
+
+x_max =  38.93796 
+x_min =  -14.24262
+
+#выборочное среднее 
+x_mean =  10.58705
+
+#значение, которое делит вариационный ряд на две равные (по числу значений) части 
+median =  8.373785
+
+#наиболее часто встречающееся значение 
+mode =  -14.24262
+
+#вариационный размах 
+_range =  53.18058
+ 
+var (несмещенная выборочная дисперсия) =  134.3451 
+var (смещенная выборочная дисперсия) =  133.3855
+
+sd (выборочноеое среднее квадратическое отклонение по несмещенной дисперсии)=  11.59073
+sd (выб-ое среднее квадратическое отклонение по смещенной дисперсии)=  11.54926
+
+среднее абсолютное отклонение =  14.04292
+эксцесс эмпирического распределения =  2.080904
+асимметрия эмпирического распределения =  0.1795692
+cv: variation coeff =  109.4803
+ошибка выборки =  0.9795957</code></pre></blockquote><p id="36b5f253-2fa6-42a8-ba51-d52147dbd686" class="">Гистограмма частот</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="59992740-3a4c-4346-abfd-835342b90603" class="code"><code class="language-R">hist(data_$sampl, col=&#x27;steelblue&#x27;)</code></pre><figure id="1c45929a-4901-46c1-a204-516ed0f965bd" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%201.png"><img style="width:463px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%201.png"/></a></figure><p id="56360a21-5020-4113-be7c-ba45c870da49" class="">4) Статистические данные</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3bada9ff-64e5-4b2d-b612-34cee3583bae" class="code"><code class="language-R">#--------4. описательная статистика--------#
+summary(data_$sampl)
+install.packages(&quot;psych&quot;)
+library(&quot;psych&quot;)
+psych::describe(data_$sampl)</code></pre><blockquote id="a4a84401-3ce3-40af-a6d8-0f5f69ce55ef" class=""><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="855fd968-83d9-4003-a09b-515f5adbf5bc" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+-14.243   1.395   8.374  10.587  20.439  38.938
+
+
+   vars   n     mean     sd    median  trimmed   mad     min
+    1    140   10.59    11.59   8.37    10.38   14.04  -14.24
+
+	  max    range   skew   kurtosis   se
+	 38.94   53.18   0.18    -0.95    0.98</code></pre></blockquote><p id="bf6c9aa5-dfef-42d0-b5fb-e61d4841ee5d" class="">
+</p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">5) - 10)</summary><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5c300c1c-7098-4c24-af94-78cc8c043501" class="code"><code class="language-R">#--------5-10. гистограммa частот--------#
+#рассчитаем количество интервалов на диапазоне выборки с помощью правила Стёрджеса
+n_int &lt;- 1 + floor(log(length(data_$sampl), base = 2))
+print(n_int)</code></pre><p id="40d1a4bf-5311-4b88-a57b-686216844a52" class="">Количество интервалов: <br/><br/><code> 8</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1e6e643b-6935-4835-83d3-1ff50cdf9753" class="code"><code class="language-R">#Таблица из значений и интервала, куда попало значение
+interv_data &lt;- data.frame(data_$sampl, cut(data_$sampl, breaks = n_int + 1))
+breaks = seq(min(data_$sampl), max(data_$sampl), length.out=n_int + 1)
+write.csv(interv_data, &quot;interv_data.csv&quot;)</code></pre><p id="7bdc9eba-1fd9-48f9-ba83-c4a73ac25aae" class="">Таблица из значений и интервала, куда попало значение:</p><figure id="beba58ac-c6c4-4d57-88aa-637edcc0a0cc"><div class="source"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/interv_data.csv">interv_data.csv</a></div></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="70695e06-4c2c-4a57-a41f-11d603d068b8" class="code"><code class="language-R">#количество значений в интервале
+frequ &lt;- table(cut(data_$sampl, b = n_int + 1))
+write.csv(frequ, &quot;frequ.csv&quot;)</code></pre><figure id="97d8acf0-2444-4c22-aab4-a55052bc0f2b"><div class="source"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/frequ.csv">frequ.csv</a></div></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="37cacaee-d00f-4e94-a209-019f9c1bc366" class="code"><code class="language-R">#Таблица из значений и их частот
+sample_freq&lt;-data.frame(table(data_$sampl))
+#гистограммa частот
+hist(data_$sampl, breaks = breaks, col = &quot;lightblue&quot;, labels=T, main=&#x27;Частоты&#x27;)</code></pre><p id="b5edac69-07ce-4828-bf35-6991bc8244a4" class="">Таблица из значений и их частот:</p><figure id="1994a238-d1c1-444b-b258-947e1faaf963"><div class="source"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/sample_freq.csv">sample_freq.csv</a></div></figure><p id="d8c9a74e-7b2b-4d78-9cc6-aff78d15ace8" class="">
+</p><p id="da4990b9-1b17-4108-a1b2-a4e2c294a716" class="">Гистограммa частот</p><figure id="5aae7c7e-7265-4cc6-b2eb-f1565475e50a" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%202.png"><img style="width:588px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%202.png"/></a></figure><p id="7da0ed19-9a60-4740-a2c9-198fa71e86ba" class="">Гистограммa плотности вероятности</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="50e1c274-9b75-44da-9411-6289333c8708" class="code"><code class="language-R">#гистограммa плотности вероятности
+hist(data_$sampl, breaks = n_int + 1, freq = FALSE, col = &quot;lightblue&quot;,
+       xlab = &quot;х&quot;,
+       ylab = &quot;плотность вероятности&quot;,
+       main = &quot;гистограмма, совмещенная с кривой плотности&quot;)
+lines(density(data_$sampl), col = &quot;red&quot;, lwd = 2)</code></pre><figure id="03bfb985-3336-497a-ba85-a7fe8db9d07a" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%203.png"><img style="width:588px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%203.png"/></a></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">6) - 10) Гистограммa относительных частот</summary><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="71c32652-40c1-4f0b-a8b3-78e8702f9252" class="code"><code class="language-R">#--------6-10. гистограммa относительных частот--------#
+#Таблица из значений и их частот(в процентах)
+sample_2&lt;-data.frame(table(data_$sampl)/length(data_$sampl))
+library(package = &quot;lattice&quot;)
+histogram(data_$sampl, breaks=n_int + 1, labels=T)</code></pre><p id="27204cb7-5a1b-4145-a69c-189e618f970c" class="">Таблица из значений и их частот(в процентах)</p><figure id="28eb9b56-a6dc-4407-bc61-59a84e57c69e"><div class="source"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/sample_2.csv">sample_2.csv</a></div></figure><p id="8f4bb6f0-93dc-40b5-beac-744f4e70f2a9" class="">Гистограмма:</p><figure id="57d37276-c6f3-4b18-abe9-497bda0bb877" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%204.png"><img style="width:588px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%204.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a6a67590-42bc-43ed-910a-84120ca2648e" class="code"><code class="language-R">#другой способ:
+breaks = seq(min(data_$sampl), max(data_$sampl), length.out=n_int +1)
+freq2 = hist(data_$sampl, breaks = breaks, plot = F)
+freq2$counts = freq2$counts / sum(freq2$counts)
+plot(freq2, main=&#x27;Относительные частоты&#x27;)</code></pre><figure id="003af5fa-357a-497b-9845-a605f5038fb3" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%205.png"><img style="width:538px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%205.png"/></a></figure><p id="7b2ccd3c-490d-4b4f-bf5c-c7415d4c0978" class="">
+</p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">7) - 10). Гистограммa плотности относительных частот</summary><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7ac034ba-6845-4e8c-8998-d8a8905ebb7b" class="code"><code class="language-R">#--------7-10. гистограммa плотности относительных частот--------#
+breaks = seq(min(data_$sampl), max(data_$sampl), length.out=n_int +1)
+freq_dens = hist(data_$sampl, breaks = breaks, plot = F)
+freq_dens$counts = freq_dens$counts / sum(freq_dens$counts)
+delta = freq_dens$breaks[2] - freq_dens$breaks[1]
+freq_dens$counts = freq_dens$counts / delta
+plot(freq_dens, col = &quot;lightblue&quot;)
+lines(freq_dens$mids, freq_dens$counts, col = &quot;red&quot;, lwd = 2, main=&#x27;Плотности отноcительных частот&#x27;)</code></pre><figure id="4b0e262b-2de8-4e76-b7e8-6e980bb9cb7c" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%206.png"><img style="width:1500px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%206.png"/></a></figure><p id="87181a21-5bd0-484c-aea8-577fdcaf763f" class="">
+</p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">8) - 10). Гистограммa кумулятивных частот</summary><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6cf34348-3aa4-4d21-b639-41631be456aa" class="code"><code class="language-R">#--------8-10. гистограммa кумулятивных частот--------#
+freq_int = hist(data_$sampl, breaks = breaks, plot = F)
+for (i in 2:n_int){
+  freq_int$counts[i] = freq_int$counts[i] + freq_int$counts[i-1]
+}
+plot(freq_int, col = &quot;lightblue&quot;)
+lines(freq_int$mids, freq_int$counts, col = &quot;red&quot;, lwd = 2, main=&#x27;Кумулятивные частоты&#x27;)</code></pre><figure id="0c4dc57d-daae-4beb-83cb-5576e8576f6e" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%207.png"><img style="width:510px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%207.png"/></a></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">9) - 10). Гистограммa относительных кумулятивных частот</summary><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5a52c622-c997-40cd-9e50-faa98e419c9b" class="code"><code class="language-R">#--------9-10. гистограммa относительных кумулятивных частот--------#
+freq_int2 = hist(data_$sampl, breaks = breaks, plot = F)
+for (i in 2:n_int){
+  freq_int2$counts[i] = freq_int2$counts[i] + freq_int2$counts[i-1]
+}
+freq_int2$counts = freq_int2$counts / sum(freq_int2$counts)
+plot(freq_int2, col = &quot;lightblue&quot;)
+lines(freq_int2$mids, freq_int2$counts, col = &quot;red&quot;, lwd = 2, main=&#x27;Относительные кумулятивные частоты&#x27;)</code></pre><figure id="889bbb7f-4e7d-475f-8d83-3d0e3511275c" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%208.png"><img style="width:566.4000244140625px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%208.png"/></a></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">11. графики частот и плотности</summary><div class="indented"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">#---11.1---#</summary><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="d2db49ba-9163-4bc7-b601-445a9ebb63dc" class="code"><code class="language-R">n_int = 10
+print(n_int)
+#Таблица из значений и интервала, куда попало значение
+interv_data &lt;- data.frame(data_$sampl, cut(data_$sampl, breaks = n_int + 1))
+breaks = seq(min(data_$sampl), max(data_$sampl), length.out=n_int + 1)
+#количество значений в интервале
+frequ &lt;- table(cut(data_$sampl, b = n_int + 1))
+#Таблица из значений и их частот
+sample_freq&lt;-data.frame(table(data_$sampl))
+#гистограммa частот
+hist(data_$sampl, breaks = breaks, col = &quot;lightblue&quot;, labels=T, main=&#x27;Частоты&#x27;)</code></pre><figure id="d2ad56f2-cb73-4eff-bd97-17532169c00b" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%209.png"><img style="width:560px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%209.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="4bfb1a09-b5ad-4ede-9bb6-de94cbdc9ec4" class="code"><code class="language-R">#гистограммa плотности вероятности
+hist(data_$sampl, breaks = breaks, freq = FALSE, col = &quot;lightblue&quot;,
+     xlab = &quot;х&quot;,
+     ylab = &quot;плотность вероятности&quot;,
+     main = &quot;гистограмма, совмещенная с кривой плотности&quot;)
+lines(density(data_$sampl), col = &quot;red&quot;, lwd = 2)</code></pre><figure id="c753da39-ec97-4899-87ed-ab0938ec2385" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2010.png"><img style="width:560px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2010.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="9f62cb18-cbb4-4199-b5fb-33fa04b5ffbe" class="code"><code class="language-R">#--------. гистограммa относительных частот--------#
+#Таблица из значений и их частот(в процентах)
+sample_2&lt;-data.frame(table(data_$sampl)/length(data_$sampl))
+library(package = &quot;lattice&quot;)
+breaks = seq(min(data_$sampl), max(data_$sampl), length.out=n_int +1)
+freq2 = hist(data_$sampl, breaks = breaks, plot = F)
+freq2$counts = freq2$counts / sum(freq2$counts)
+plot(freq2, main=&#x27;Относительные частоты&#x27;)</code></pre><figure id="4e11a50a-345c-44ab-8243-8c4b619b6334" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2011.png"><img style="width:560px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2011.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1630bad8-4517-4ead-be23-eeb6b37df064" class="code"><code class="language-R">#--------. гистограммa плотности относительных частот--------#
+breaks = seq(min(data_$sampl), max(data_$sampl), length.out=n_int +1)
+freq_dens = hist(data_$sampl, breaks = breaks, plot = F)
+freq_dens$counts = freq_dens$counts / sum(freq_dens$counts)
+delta = freq_dens$breaks[2] - freq_dens$breaks[1]
+freq_dens$counts = freq_dens$counts / delta
+plot(freq_dens, col = &quot;lightblue&quot;)
+lines(freq_dens$mids, freq_dens$counts, col = &quot;red&quot;, lwd = 2, main=&#x27;Плотности отноcительных частот&#x27;)</code></pre><figure id="e5fed781-4da0-48a4-b9c0-724479026353" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2012.png"><img style="width:560px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2012.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="018261ff-9cea-4ff1-af8a-af9c830e01e3" class="code"><code class="language-R">#--------. гистограммa кумулятивных частот--------#
+freq_int = hist(data_$sampl, breaks = breaks, plot = F)
+for (i in 2:n_int){
+  freq_int$counts[i] = freq_int$counts[i] + freq_int$counts[i-1]
+}
+plot(freq_int, col = &quot;lightblue&quot;)
+lines(freq_int$mids, freq_int$counts, col = &quot;red&quot;, lwd = 2, main=&#x27;Кумулятивные частоты&#x27;)</code></pre><figure id="2069be8f-2dbd-4039-a065-33f39ccdd400" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2013.png"><img style="width:560px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2013.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="fcb3f70b-42d8-4db6-bce3-84f139c7d70b" class="code"><code class="language-R">#--------. гистограммa относительных кумулятивных частот--------#
+freq_int2 = hist(data_$sampl, breaks = breaks, plot = F)
+for (i in 2:n_int){
+  freq_int2$counts[i] = freq_int2$counts[i] + freq_int2$counts[i-1]
+}
+freq_int2$counts = freq_int2$counts / sum(freq_int2$counts)
+plot(freq_int2, col = &quot;lightblue&quot;)
+lines(freq_int2$mids, freq_int2$counts, col = &quot;red&quot;, lwd = 2, main=&#x27;Относительные кумулятивные частоты&#x27;)</code></pre><figure id="8b8a715d-4978-40b2-bc65-edb1d7f1664c" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2014.png"><img style="width:560px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2014.png"/></a></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">#---11.2---#</summary><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="02116f06-e7ed-4e1c-ac6d-1ec32cd108cf" class="code"><code class="language-R">#--------. гистограммa частот--------#
+#рассчитаем количество интервалов на диапазоне выборки
+n_int &lt;- 1 + floor(3.2*log(length(data_$sampl), base = 2))
+print(n_int)</code></pre><p id="883cb924-4a4e-4415-90ae-c799ddec02a9" class="">количество интервалов<br/><br/><code>23</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0bab2f72-9467-403a-99c4-18957891f5a0" class="code"><code class="language-R">#Таблица из значений и интервала, куда попало значение
+interv_data &lt;- data.frame(data_$sampl, cut(data_$sampl, breaks = n_int + 1))
+breaks = seq(min(data_$sampl), max(data_$sampl), length.out=n_int + 1)
+#количество значений в интервале
+frequ &lt;- table(cut(data_$sampl, b = n_int + 1))
+#Таблица из значений и их частот
+sample_freq&lt;-data.frame(table(data_$sampl))
+#гистограммa частот
+hist(data_$sampl, breaks = breaks, col = &quot;lightblue&quot;, labels=T, main=&#x27;Частоты&#x27;)</code></pre><figure id="141a665f-a210-4b95-b429-467d296d8d8a" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2015.png"><img style="width:560px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2015.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="455f0d54-0cc0-471f-9853-afc7bbecfca5" class="code"><code class="language-R">#гистограммa плотности вероятности
+hist(data_$sampl, breaks = breaks, freq = FALSE, col = &quot;lightblue&quot;,
+     xlab = &quot;х&quot;,
+     ylab = &quot;плотность вероятности&quot;,
+     main = &quot;гистограмма, совмещенная с кривой плотности&quot;)
+lines(density(data_$sampl), col = &quot;red&quot;, lwd = 2)</code></pre><figure id="75e6674f-8372-4c51-9d9b-2f566440c72e" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2016.png"><img style="width:560px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2016.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="37ab4521-949e-4df4-aaf0-ac58d4ae9b93" class="code"><code class="language-R">#--------. гистограммa относительных частот--------#
+#Таблица из значений и их частот(в процентах)
+sample_2&lt;-data.frame(table(data_$sampl)/length(data_$sampl))
+library(package = &quot;lattice&quot;)
+breaks = seq(min(data_$sampl), max(data_$sampl), length.out=n_int +1)
+freq2 = hist(data_$sampl, breaks = breaks, plot = F)
+freq2$counts = freq2$counts / sum(freq2$counts)
+plot(freq2, main=&#x27;Относительные частоты&#x27;, col = &quot;lightblue&quot;)</code></pre><figure id="fa97194f-c51c-4334-b80f-74a263e6e1b5" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2017.png"><img style="width:560px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2017.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="98aeb543-ec0d-4a0d-b87c-aac69338816b" class="code"><code class="language-R">#--------. гистограммa плотности относительных частот--------#
+breaks = seq(min(data_$sampl), max(data_$sampl), length.out=n_int +1)
+freq_dens = hist(data_$sampl, breaks = breaks, plot = F)
+freq_dens$counts = freq_dens$counts / sum(freq_dens$counts)
+delta = freq_dens$breaks[2] - freq_dens$breaks[1]
+freq_dens$counts = freq_dens$counts / delta
+plot(freq_dens, col = &quot;lightblue&quot;)
+lines(freq_dens$mids, freq_dens$counts, col = &quot;red&quot;, lwd = 2, main=&#x27;Плотности отноcительных частот&#x27;)</code></pre><figure id="885d2630-753e-4454-b64b-9cfcae4b5f54" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2018.png"><img style="width:560px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2018.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="43a2aac9-2b81-4f21-b22e-f03455088211" class="code"><code class="language-R">#--------. гистограммa кумулятивных частот--------#
+freq_int = hist(data_$sampl, breaks = breaks, plot = F)
+for (i in 2:n_int){
+  freq_int$counts[i] = freq_int$counts[i] + freq_int$counts[i-1]
+}
+plot(freq_int, col = &quot;lightblue&quot;)
+lines(freq_int$mids, freq_int$counts, col = &quot;red&quot;, lwd = 2, main=&#x27;Кумулятивные частоты&#x27;)</code></pre><figure id="1b2e46b0-5d57-4f47-bf7d-26496b3a071d" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2019.png"><img style="width:560px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2019.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ca22addb-03f7-4755-94b3-b0dfacc19a15" class="code"><code class="language-R">#--------. гистограммa относительных кумулятивных частот--------#
+freq_int2 = hist(data_$sampl, breaks = breaks, plot = F)
+for (i in 2:n_int){
+  freq_int2$counts[i] = freq_int2$counts[i] + freq_int2$counts[i-1]
+}
+freq_int2$counts = freq_int2$counts / sum(freq_int2$counts)
+plot(freq_int2, col = &quot;lightblue&quot;)
+lines(freq_int2$mids, freq_int2$counts, col = &quot;red&quot;, lwd = 2, main=&#x27;Относительные кумулятивные частоты&#x27;)</code></pre><figure id="0883c0a6-fc4f-430d-954e-584ae1392208" class="image"><a href="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2020.png"><img style="width:560px" src="%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%E2%84%961%201d2a105ba6194e27b6b7cfb83cbc9dc3/Untitled%2020.png"/></a></figure><p id="1459b255-1c47-4c4e-bbb8-8fb4c868e9f8" class="">
+</p></div></details></div></details><p id="89421104-3197-4860-8f0a-25937dfed056" class="">
+</p><p id="6d570a18-5013-42b2-8cb9-4b1092135785" class="">
+</p><h3 id="3d4ecc89-eace-43b5-bea4-f498bf5dcca3" class="block-color-gray_background"><strong>Корреляция</strong></h3><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">#1</summary><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e2c0bfed-f1c8-4912-b667-d46228e80f98" class="code"><code class="language-R">library (moments)
+#1
+x_data1 = data.frame(
+  s = rnorm(n = 140, 0, 1)
+)</code></pre></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">#2</summary><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="867c48e9-0c58-4780-9d0f-c5203d1f86c4" class="code"><code class="language-R">#2
+x_data2 = data.frame(
+  s = rnorm(n = 140, 2, 1)
+)</code></pre></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">#3 - выборочные коэффициенты корреляции</summary><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3e699ecb-f1ba-4e50-a605-911825a2f2d7" class="code"><code class="language-R">#коэффициент Пирсона x_data1, x_data2
+cor(x_data1$s, x_data2$s) 
+#коэффициент Пирсона x_data1, data_$sampl
+cor(x_data1$s, data_$sampl) 
+#коэффициент Пирсона x_data2, data_$sampl
+cor(x_data2$s, data_$sampl) 
+
+n = 140
+#критическое значение t-критерия
+qt_ = qt(p = 0.05, df = n - 2, lower.tail= FALSE)
+qt_
+
+sd0 = sd(data_$sampl)
+sd1 = sd(x_data1$s)
+sd2 = sd(x_data2$s)
+#коэффициенты парной корреляции
+r_01 = (mean(data_$sampl*x_data1$s) - mean(data_$sampl)*mean(x_data1$s))/(sd0*sd1)
+r_02 = (mean(data_$sampl*x_data2$s) - mean(data_$sampl)*mean(x_data2$s))/(sd0*sd2)
+r_12 = (mean(x_data2$s*x_data1$s) - mean(x_data2$s)*mean(x_data1$s))/(sd2*sd1)
+cat(r_01, r_02, r_12)</code></pre><p id="2404f883-5df4-4f32-b182-c87d085e0ea4" class="">Результаты:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="52e9b97a-bd00-419f-b116-8c61ab1ad7a7" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">#коэффициент Пирсона x_data1, x_data2
+cor(x_data1$s, x_data2$s) =  0.1065039
+
+#коэффициент Пирсона x_data1, data_$sampl
+cor(x_data1$s, data_$sampl) = 0.08913364
+
+#коэффициент Пирсона x_data2, data_$sampl
+cor(x_data2$s, data_$sampl = 0.06711166</code></pre><p id="257f4528-0c13-4e97-9ced-fc59d4abb0f3" class="">Критическое значение t-критерия:<br/><br/><code>1.65597</code></p><p id="5cdf7b57-d053-46cc-b615-f4911126447f" class="">коэффициенты парной корреляции<br/><br/><code>0.08849697 0.06663229 0.1057432</code></p><p id="d37aa83b-bcc1-4e7a-90f8-b949e11b80f2" class="">
+</p><p id="a5cf1cfa-f28f-48eb-8d6f-ef5ab6430c0b" class="">Проверим значимость коэффициентов корреляции:</p><p id="3c35dfa7-b6d0-4cc4-b87a-80884bc76a81" class=""><strong>Между первой и второй:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3ebb1ee4-8d85-4caa-b20a-266c9de312f9" class="code"><code class="language-R">#t_тест
+alpha = 0.05
+t_r12 &lt;- r_12*sqrt(n - 2)/sqrt(1 - r_12*r_12)
+t12 = t.test(x_data1$s, x_data2$s, alternative = &quot;two.sided&quot;, conf.level = 1-alpha)
+t12
+t_r12
+
+if (abs(t_r12) &gt; qt_) {
+  print(&quot;коэффициент r12 - значим&quot;)
+} else {print(&quot;коэффициент r12 - незначим&quot;)}
+</code></pre><p id="33d2973d-64d0-4ed8-9e49-f8ca13f58665" class="">Результаты:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="91934ec5-b0dc-400d-9d65-888cfcadb782" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Welch Two Sample t-test
+
+data:  x_data1$s and x_data2$s
+t = -16.754, df = 274.03, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -2.231058 -1.761875
+sample estimates:
+  mean of x   mean of y 
+-0.05952291  1.93694338 </code></pre><p id="d5c0bb39-4b9e-4a92-bde7-c0753a79ebb0" class="">Значение статистического критерия: <br/><br/><code>1.249205</code></p><p id="b6483887-c78d-4ddb-8f1d-f54a209db441" class="">Значимость коэффициента: <br/><br/><code>коэффициент r12 - незначим</code></p><p id="e890a8cd-8777-46b4-8fc6-5ae4f9f32056" class="">
+</p><p id="3f6ef98a-72ec-40aa-8b24-d1797631a794" class=""><strong>Между первой и начальной выборкой:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="9e86e66a-e178-4f6d-97e0-0fe170089330" class="code"><code class="language-R">t_r01 &lt;- r_01*sqrt(n - 2)/sqrt(1 - r_01*r_01)
+t01 = t.test(x_data1$s, data_$sampl, alternative = &quot;two.sided&quot;, conf.level = 1-alpha)
+t01
+t_r01
+if (abs(t_r01) &gt; qt_) {
+  print(&quot;коэффициент r01 - значим&quot;)
+} else {print(&quot;коэффициент r01 - незначим&quot;)}</code></pre><p id="9afe9bf7-13fb-46d6-85f7-93a246e154c3" class="">Результаты:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="41a4739f-8043-413f-9067-c5638665b6ae" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Welch Two Sample t-test
+
+data:  x_data1$s and data_$sampl
+t = -9.6165, df = 141.46, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -11.045094  -7.278323
+sample estimates:
+  mean of x   mean of y
+-0.05952291  9.10218527</code></pre><p id="ac6aef1b-c968-493c-8c58-e573a2f4d5cd" class="">Значение статистического критерия: <br/><br/><code>1.043699</code></p><p id="7e3878c2-da9d-4e39-a611-84d330456260" class="">Значимость коэффициента: <br/><br/><code>коэффициент r01 - незначим</code></p><p id="2a070dc3-e690-4d72-ad66-095a4f242f62" class="">
+</p><p id="9ce14ecd-9bbd-4700-b2f1-57b432c1ad89" class=""><strong>Между начальной выборкой и второй:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ec3da6f8-aa95-4c3e-9907-7f288c88bc44" class="code"><code class="language-R">t_r02 &lt;- r_02*sqrt(n - 2)/sqrt(1 - r_02*r_02)
+t02 = t.test(data_$sampl, x_data2$s, alternative = &quot;two.sided&quot;, conf.level = 1-alpha)
+t02
+t_r02
+if (abs(t_r02) &gt; qt_) {
+  print(&quot;коэффициент r02 - значим&quot;)
+} else {print(&quot;коэффициент r02 - незначим&quot;)}</code></pre><p id="1737c1ff-51b8-4205-9d4c-6d9b8a5870a4" class="">Результаты:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="88e01ff1-5fc7-458a-88ba-10cf2efa3cbe" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Welch Two Sample t-test
+
+data:  data_$sampl and x_data2$s
+t = 7.528, df = 140.93, p-value = 5.59e-12
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 5.283569 9.046915
+sample estimates:
+mean of x mean of y
+ 9.102185  1.936943</code></pre><p id="77e83052-c75e-4ae5-afa1-ac887f3048af" class="">Значение статистического критерия: <br/><br/><code>0.7844957</code></p><p id="f902d9f1-d7c7-493f-8001-5108ad99535e" class="">Значимость коэффициента: <br/><br/><code>коэффициент r02 - незначим</code></p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">#4 - выборочные ковариации</summary><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3f23ef1a-e39f-4851-9f1e-2e759c7dc70d" class="code"><code class="language-R">#4 - выборочные ковариации
+#ковариация  x_data1, x_data2
+cov(x_data1$s, x_data2$s) 
+#ковариация  x_data1, data_$sampl
+cov(x_data1$s, data_$sampl) 
+#ковариация  x_data2, data_$sampl
+cov(x_data2$s, data_$sampl) </code></pre><p id="fb4753fe-b74d-4505-8cce-4aa8225fb865" class="">Результат:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="d7d14036-d577-4a27-8494-1d427d781b05" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">&gt; #ковариация  x_data1, x_data2
+&gt; cov(x_data1$s, x_data2$s)
+[1] 0.1050947
+&gt; #ковариация  x_data1, data_$sampl
+&gt; cov(x_data1$s, data_$sampl)
+[1] 1.055639
+&gt; #ковариация  x_data2, data_$sampl
+&gt; cov(x_data2$s, data_$sampl)
+[1] 0.7043102</code></pre><p id="53fc0c3a-9dca-45cc-ba24-20f6b4096780" class="">Матрица ковариации:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b961f804-9c9f-4940-acf4-b9117ac63fbb" class="code"><code class="language-R">cov_mat = matrix(c(data_$sampl, x_data1$s, x_data2$s), 140, 3)
+print(cov(cov_mat))</code></pre><table id="3213cf91-bd0f-4de8-a556-58d12c24df35" class="simple-table"><tbody><tr id="7eed4590-56b7-48d1-af88-f86d0201dc0b"><td id="o;I`" class="" style="width:438px"><code>            [,1]      [,2]      [,3]<br/>[1,] 125.9577245 1.0556391 0.7043102<br/>[2,]   1.0556391 1.1135838 0.1050947<br/>[3,]   0.7043102 0.1050947 0.8743939<br/></code></td></tr></tbody></table><p id="3d6bdf9b-ba0a-40ee-bb35-efbc17f59a5a" class="">
+</p><p id="5ebb75fc-1595-4af3-8329-9cf1dc76a6cf" class="">Стандартное отклонение:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="20671481-8226-424b-a6b0-d44109953787" class="code"><code class="language-R">#стандартное отклонение
+cat(&quot;sd (выб-ое ср квадр откл по несм дисп: data_$sampl)= &quot;, sd(data_$sampl))
+cat(&quot;sd (выб-ое ср квадр откл по несм дисп: x_data1$s)= &quot;, sd(x_data1$s))
+cat(&quot;sd (выб-ое ср квадр откл по несм дисп: x_data2$s)= &quot;, sd(x_data2$s))
+sd0 = sd(data_$sampl)
+sd1 = sd(x_data1$s)
+sd2 = sd(x_data2$s)</code></pre><p id="73cf08f5-9be1-4571-b60b-d04d454afd41" class="">Полученные значения:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="4da4d26f-74e3-4e5b-8af6-96fa7990fcfe" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">sd (выб-ое ср квадр откл по несм дисп: data_$sampl)=  11.22309
+
+sd (выб-ое ср квадр откл по несм дисп: x_data1$s)=  1.055265
+
+sd (выб-ое ср квадр откл по несм дисп: x_data2$s)=  0.9350903</code></pre><p id="42177706-ee4f-4997-a741-62f27dff617f" class="">
+</p><p id="9feb2f36-3c9d-4abd-a2e7-1e07f9cba247" class="">Коэффициенты парной корреляции:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7e64b9e0-d302-4e9b-9131-e55029dbf5b4" class="code"><code class="language-R">r_01 = (mean(data_$sampl*x_data1$s) - mean(data_$sampl)*mean(x_data1$s))/(sd0*sd1)
+r_02 = (mean(data_$sampl*x_data2$s) - mean(data_$sampl)*mean(x_data2$s))/(sd0*sd2)
+r_21 = (mean(x_data2$s*x_data1$s) - mean(x_data2$s)*mean(x_data1$s))/(sd2*sd1)
+
+cat(&quot;коэффициент парной корреляции x_data1, data_$sampl= &quot;, r_01)
+cat(&quot;коэффициент парной корреляции x_data2, data_$sampl= &quot;, r_02)
+cat(&quot;коэффициент парной корреляции x_data1, x_data2)= &quot;, r_21)</code></pre><p id="01a06edd-5dcb-4eab-9bcc-c47a2135766c" class="">Полученные значения:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5732c70e-16eb-4adc-b035-a4dc1859e5d8" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">коэффициент парной корреляции x_data1, data_$sampl=  0.08849697
+
+коэффициент парной корреляции x_data2, data_$sampl=  0.06663229
+
+коэффициент парной корреляции x_data1, x_data2=  0.1057432</code></pre><p id="0fd2f21e-bd17-4c35-a41f-58f7cfb86ccb" class="">
+</p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">#5 - корреляционная матрица</summary><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="fcb5985c-fc30-4170-b547-1b3c569dc09a" class="code"><code class="language-R">#5 - корреляционная матрица
+correl_mat = matrix(c(data_$sampl, x_data1$s, x_data2$s), 140, 3)
+print(cor(correl_mat))</code></pre><table id="c8f67a45-e39d-4bf7-8120-b3d903ea9144" class="simple-table"><tbody><tr id="47a16e59-9b21-49ab-9b21-281748804608"><td id="xpSO" class="" style="width:404px"><code>           [,1]       [,2]       [,3]<br/>[1,] 1.00000000 0.08913364 0.06711166<br/>[2,] 0.08913364 1.00000000 0.10650394<br/>[3,] 0.06711166 0.10650394 1.00000000<br/></code></td></tr></tbody></table></div></details><p id="4a119848-7ad2-4da5-b8e4-efefd3084c7e" class="">
+</p><p id="79965910-0ee8-486d-a917-69510d993fb7" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
